@@ -13,6 +13,8 @@
 		057F72502739D2AB00163258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057F724E2739D2AB00163258 /* Main.storyboard */; };
 		057F72522739D2AE00163258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057F72512739D2AE00163258 /* Assets.xcassets */; };
 		057F72552739D2AE00163258 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057F72532739D2AE00163258 /* LaunchScreen.storyboard */; };
+		057F725E2739D2DC00163258 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 057F725D2739D2DC00163258 /* SnapKit */; };
+		057F72612739D2ED00163258 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 057F72602739D2ED00163258 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057F72612739D2ED00163258 /* Kingfisher in Frameworks */,
+				057F725E2739D2DC00163258 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,10 @@
 			dependencies = (
 			);
 			name = CatsDogsCombine;
+			packageProductDependencies = (
+				057F725D2739D2DC00163258 /* SnapKit */,
+				057F72602739D2ED00163258 /* Kingfisher */,
+			);
 			productName = CatsDogsCombine;
 			productReference = 057F72452739D2AB00163258 /* CatsDogsCombine.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,10 @@
 				Base,
 			);
 			mainGroup = 057F723C2739D2AB00163258;
+			packageReferences = (
+				057F725C2739D2DC00163258 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				057F725F2739D2ED00163258 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 057F72462739D2AB00163258 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +372,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		057F725C2739D2DC00163258 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		057F725F2739D2ED00163258 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		057F725D2739D2DC00163258 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057F725C2739D2DC00163258 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		057F72602739D2ED00163258 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057F725F2739D2ED00163258 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 057F723D2739D2AB00163258 /* Project object */;
 }
