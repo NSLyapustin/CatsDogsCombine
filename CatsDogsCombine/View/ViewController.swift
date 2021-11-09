@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import Kingfisher
 
 class ViewController: UIViewController {
     
@@ -79,6 +80,7 @@ class ViewController: UIViewController {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = Constants.ContentImageView.cornerRadius
         
         return imageView
     }()
@@ -176,6 +178,7 @@ class ViewController: UIViewController {
     private func setupSubscribers() {
         setupSegmentedControlIndexSubscriber()
         setupCatSubscribers()
+        setupDogSubscribers()
         setupScoreSubscribers()
     }
     
@@ -183,17 +186,29 @@ class ViewController: UIViewController {
         cancellables.insert(viewModel.$catsScore
                                 .receive(on: DispatchQueue.main)
                                 .sink(receiveValue: { catsScore in
-            self.scoreLabel.text = "Score: \(catsScore) cats and 11 dogs"
+            self.scoreLabel.text = "Score: \(catsScore) cats and \(self.viewModel.dogsScore) dogs"
+        }))
+        
+        cancellables.insert(viewModel.$dogsScore
+                                .receive(on: DispatchQueue.main)
+                                .sink(receiveValue: { dogsScore in
+            self.scoreLabel.text = "Score: \(self.viewModel.catsScore) cats and \(dogsScore) dogs"
         }))
     }
     
     private func setupCatSubscribers() {
         cancellables.insert(viewModel.$cat
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveCompletion: { _ in
-            self.viewModel.catsScore += 1
-        }, receiveValue: { cat in
+                                .sink(receiveValue: { cat in
             self.contentLabel.text = cat?.fact
+        }))
+    }
+    
+    private func setupDogSubscribers() {
+        cancellables.insert(viewModel.$dog
+                                .receive(on: DispatchQueue.main)
+                                .sink(receiveValue: { dog in
+            self.contentImageView.kf.setImage(with: URL(string: dog?.message ?? ""))
         }))
     }
     
@@ -210,6 +225,7 @@ class ViewController: UIViewController {
             case 1:
                 self.contentImageView.isHidden = false
                 self.contentLabel.isHidden = true
+                self.fetchDogImage()
                 
             default:
                 break
@@ -225,6 +241,10 @@ class ViewController: UIViewController {
         viewModel.fetchCatFact()
     }
     
+    private func fetchDogImage() {
+        viewModel.fetchDogImage()
+    }
+    
     @objc private func onSegmentedControlValueChanged() {
         viewModel.segmentedControlIndex = segmentedControl.selectedSegmentIndex
     }
@@ -232,6 +252,8 @@ class ViewController: UIViewController {
     @objc private func onMoreButtonTouchUpInside() {
         if isCatsChoosen {
             fetchCatFact()
+        } else {
+            fetchDogImage()
         }
     }
 }
