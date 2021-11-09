@@ -10,6 +10,7 @@
 		057F64B1273AF01A00997FD2 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F64B0273AF01A00997FD2 /* AnimalService.swift */; };
 		057F64B3273AF10B00997FD2 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F64B2273AF10B00997FD2 /* Cat.swift */; };
 		057F64BE273AF24200997FD2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F64BD273AF24200997FD2 /* ViewModel.swift */; };
+		057F64C0273B01E400997FD2 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F64BF273B01E400997FD2 /* Dog.swift */; };
 		057F72492739D2AB00163258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F72482739D2AB00163258 /* AppDelegate.swift */; };
 		057F724B2739D2AB00163258 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F724A2739D2AB00163258 /* SceneDelegate.swift */; };
 		057F724D2739D2AB00163258 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F724C2739D2AB00163258 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		057F64B0273AF01A00997FD2 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
 		057F64B2273AF10B00997FD2 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		057F64BD273AF24200997FD2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		057F64BF273B01E400997FD2 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		057F72452739D2AB00163258 /* CatsDogsCombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatsDogsCombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057F72482739D2AB00163258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		057F724A2739D2AB00163258 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				057F64B2273AF10B00997FD2 /* Cat.swift */,
+				057F64BF273B01E400997FD2 /* Dog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				057F724D2739D2AB00163258 /* ViewController.swift in Sources */,
+				057F64C0273B01E400997FD2 /* Dog.swift in Sources */,
 				057F64B1273AF01A00997FD2 /* AnimalService.swift in Sources */,
 				057F64B3273AF10B00997FD2 /* Cat.swift in Sources */,
 				057F72492739D2AB00163258 /* AppDelegate.swift in Sources */,

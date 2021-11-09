@@ -14,6 +14,7 @@ class AnimalService {
     
     private enum Endpoint: String {
         case catsEndpoint = "https://catfact.ninja/fact"
+        case dogsEndpoint = "https://dog.ceo/api/breeds/image/random"
     }
     
     // Public Properties
@@ -24,6 +25,16 @@ class AnimalService {
         return URLSession.shared.dataTaskPublisher(for: url)
             .compactMap { $0.data }
             .decode(type: Cat.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    var dogPublisher: AnyPublisher<Dog, Error> {
+        let url = URL(string: Endpoint.dogsEndpoint.rawValue)!
+
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .compactMap { $0.data }
+            .decode(type: Dog.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
