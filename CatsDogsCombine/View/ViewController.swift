@@ -240,6 +240,8 @@ class ViewController: UIViewController {
     
     private func setupInitialState() {
         segmentedControl.selectedSegmentIndex = 0
+        view.backgroundColor = .systemBackground
+        title = "Cats and dogs"
     }
     
     private func fetchCatFact() {
