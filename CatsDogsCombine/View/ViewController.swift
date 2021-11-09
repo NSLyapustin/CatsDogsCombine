@@ -124,6 +124,7 @@ class ViewController: UIViewController {
         setupConstraints()
         setupSubscribers()
         setupInitialState()
+        setupResetButton()
     }
     
     // MARK: - Instance Methods
@@ -180,6 +181,10 @@ class ViewController: UIViewController {
         setupCatSubscribers()
         setupDogSubscribers()
         setupScoreSubscribers()
+    }
+    
+    private func setupResetButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(onResetButtonTouchUpInside))
     }
     
     private func setupScoreSubscribers() {
@@ -255,6 +260,13 @@ class ViewController: UIViewController {
         } else {
             fetchDogImage()
         }
+    }
+    
+    @objc private func onResetButtonTouchUpInside() {
+        viewModel.dogsScore = 0
+        viewModel.catsScore = 0
+        contentLabel.text = ""
+        contentImageView.image = nil
     }
 }
 
