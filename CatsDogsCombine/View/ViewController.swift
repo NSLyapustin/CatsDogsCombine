@@ -190,13 +190,19 @@ class ViewController: UIViewController {
     private func setupScoreSubscribers() {
         cancellables.insert(viewModel.$catsScore
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveValue: { catsScore in
+                                .sink(receiveValue: { [weak self] catsScore in
+            guard let self = self else {
+                return
+            }
             self.scoreLabel.text = "Score: \(catsScore) cats and \(self.viewModel.dogsScore) dogs"
         }))
         
         cancellables.insert(viewModel.$dogsScore
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveValue: { dogsScore in
+                                .sink(receiveValue: { [weak self] dogsScore in
+            guard let self = self else {
+                return
+            }
             self.scoreLabel.text = "Score: \(self.viewModel.catsScore) cats and \(dogsScore) dogs"
         }))
     }
@@ -204,7 +210,10 @@ class ViewController: UIViewController {
     private func setupCatSubscribers() {
         cancellables.insert(viewModel.$cat
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveValue: { cat in
+                                .sink(receiveValue: { [weak self] cat in
+            guard let self = self else {
+                return
+            }
             self.contentLabel.text = cat?.fact
         }))
     }
@@ -212,7 +221,10 @@ class ViewController: UIViewController {
     private func setupDogSubscribers() {
         cancellables.insert(viewModel.$dog
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveValue: { dog in
+                                .sink(receiveValue: { [weak self] dog in
+            guard let self = self else {
+                return
+            }
             self.contentImageView.kf.setImage(with: URL(string: dog?.message ?? ""))
         }))
     }
@@ -220,7 +232,10 @@ class ViewController: UIViewController {
     private func setupSegmentedControlIndexSubscriber() {
         cancellables.insert(viewModel.$segmentedControlIndex
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveValue: { index in
+                                .sink(receiveValue: { [weak self] index in
+            guard let self = self else {
+                return
+            }
             switch index {
             case 0:
                 self.contentImageView.isHidden = true
