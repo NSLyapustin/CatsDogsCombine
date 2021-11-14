@@ -28,10 +28,16 @@ class ViewModel {
     public func fetchCatFact() {
         cancellableSet.insert(animalsService.catPublisher
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveCompletion: { _ in
+                                .sink(receiveCompletion: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
             self.catsScore += 1
         },
-                                      receiveValue: { cat in
+                                      receiveValue: { [weak self] cat in
+            guard let self = self else {
+                return
+            }
             self.cat = cat
         }))
     }
@@ -39,10 +45,16 @@ class ViewModel {
     public func fetchDogImage() {
         cancellableSet.insert(animalsService.dogPublisher
                                 .receive(on: DispatchQueue.main)
-                                .sink(receiveCompletion: { _ in
+                                .sink(receiveCompletion: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
             self.dogsScore += 1
         },
-                                      receiveValue: { dog in
+                                      receiveValue: { [weak self] dog in
+            guard let self = self else {
+                return
+            }
             self.dog = dog
         }))
     }
